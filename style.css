@@ -1,0 +1,458 @@
+:root {
+    --primary:#1e3c72;
+    --secondary:#2a5298;
+    --accent:#ffb703;
+    --white:#ffffff;
+    --dark:#0f172a;
+    --shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:var(--white);
+}
+
+/* NAVBAR */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    background:rgba(0,0,0,0.2);
+    backdrop-filter:blur(6px);
+}
+
+.logo{
+    font-weight:700;
+    font-size:18px;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+}
+
+/* HERO */
+
+.hero{
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 20px;
+      background-image:linear-gradient(rgba(156, 173, 219, 0.4), rgba(2, 8, 22, 0.4)),
+        url("c:\Users\pc\Pictures\university1.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero-content h1{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:18px;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+/* BUTTON */
+
+.btn{
+    padding:14px 35px;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.primary{
+    background:var(--accent);
+    color:var(--dark);
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+}
+
+.card{
+    background:white;
+    color:#0f172a;
+    padding:30px;
+    border-radius:20px;
+    width:200px;
+    text-align:center;
+    box-shadow:var(--shadow);
+}
+.card h3{
+    margin-bottom:10px;
+}
+.card p{
+    font-size:28px;
+    font-weight:bold;
+}
+
+/* ============================= */
+/*           LOGIN PAGE          */
+/* ============================= */
+
+.login-body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.login-card h2 {
+    margin-bottom: 10px;
+    color: #1e3c72;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1e3c72;
+    box-shadow: 0 0 0 3px rgba(30,60,114,0.15);
+}
+
+/* Button */
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.primary {
+    background: #1e3c72;
+    color: white;
+}
+
+.primary:hover {
+    background: #16315c;
+    transform: translateY(-2px);
+}
+
+/* ============================= */
+/*        GENERAL LAYOUT         */
+/* ============================= */
+
+.page-container {
+    padding: 100px 8%;
+    min-height: 100vh;
+    background: #f4f7fb;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.page-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #1e3c72;
+}
+
+/* Navbar */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: #1e3c72;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    color: white;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+/* Card */
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+/* Form */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Button */
+
+.btn {
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.primary {
+    background: #1e3c72;
+    color: white;
+}
+
+.primary:hover {
+    background: #16315c;
+}
+
+/* Table */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background: #1e3c72;
+    color: white;
+    padding: 12px;
+}
+
+.table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.table tr:hover {
+    background: #f0f4ff;
+}
+/* ===== Base ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #1f2937;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 0 20px;
+    overflow: hidden;
+    background-image:
+        linear-gradient(rgba(156, 173, 219, 0.4), rgba(2, 8, 22, 0.4)),
+        url("5938119477788609441_121.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+/* محتوى الهيرو */
+.hero-content {
+    position: relative;
+    max-width: 800px;
+    z-index: 2;
+    color: #ddd8d8;
+}
+
+.hero-content h1 {
+     color: #060e31;
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #e9f0ef;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+}
+
+.btn-dashboard {
+    padding: 14px 36px;
+    font-weight: 700;
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: #0e2070;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-dashboard:hover {
+    background-color: #71759e;
+}
+
+/* ===== Animated Circles ===== */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: float 20s linear infinite;
+}
+
+.circle1 { width: 200px; height: 200px; background-color: #ffffff; top: 10%; left: 5%; animation-duration: 25s; }
+.circle2 { width: 150px; height: 150px; background-color: #f59e0b; top: 50%; left: 70%; animation-duration: 30s; }
+.circle3 { width: 100px; height: 100px; background-color: #0ea5e9; top: 70%; left: 20%; animation-duration: 35s; }
+.circle4 { width: 250px; height: 250px; background-color: #16a34a; top: 30%; left: 50%; animation-duration: 40s; }
+
+@keyframes float {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); }
+    50% { transform: translateY(-50px) translateX(30px) rotate(180deg); }
+    100% { transform: translateY(0) translateX(0) rotate(360deg); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 36px; }
+    .hero-content p { font-size: 16px; }
+    .circle { display: none; }
+}
+/* ============================= */
+/*        CENTER TABLE STYLE     */
+/* ============================= */
+
+.page-container {
+    padding: 120px 0;
+    min-height: 100vh;
+    background: #f4f7fb;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* هذا يجعل المحتوى في الوسط */
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    width: 80%;
+    max-width: 900px; /* يجعلها في الوسط بعرض مناسب */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background: #1e3c72;
+    color: white;
+    padding: 14px;
+}
+
+.table td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.table tr:hover {
+    background: #f0f4ff;
+}

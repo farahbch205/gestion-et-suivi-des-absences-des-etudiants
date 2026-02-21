@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Justifier une Absence</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div>Gestion des Absences - Étudiant</div>
+    <ul>
+        
+        <li><a href="student-absences.html">Mes Absences</a></li>
+        <li><a href="upload-justification.html">Justifier</a></li>
+    </ul>
+</nav>
+
+<div class="page-container">
+
+<h2 class="page-title">Téléverser un Justificatif</h2>
+
+<div class="card">
+
+<form enctype="multipart/form-data">
+
+<div class="form-group">
+<label>Date de l'absence</label>
+<input type="date" required>
+</div>
+
+<div class="form-group">
+<label>Motif</label>
+<input type="text" placeholder="Ex: Certificat médical" required>
+</div>
+
+<div class="form-group">
+<label>Joindre un fichier (PDF, JPG, PNG)</label>
+<input type="file" accept=".pdf,.jpg,.png" required>
+</div>
+
+<button class="btn primary">Envoyer</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>
