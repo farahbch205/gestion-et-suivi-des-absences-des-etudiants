@@ -1,39 +1,62 @@
+```php
 <?php
-//$conn = new mysqli("localhost", "root", "", "gestion_absences");
+include "config.php";
 
-//if ($conn->connect_error) {
-  //  die("Erreur connexion: " . $conn->connect_error);
-//}
-include "$_SERVER[DOCUMENT_ROOT]/gestion_absences/db_connection.php";
-$conn = OpenConnection();
-if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["role"])) {
+$error="";
 
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $role = $_POST["role"];
+if(isset($_POST['login'])){
 
-    if ($role == "Administrateur") {
-        $table = "administrateurs";
-        $redirect = "dashboard.html";
-    } elseif ($role == "Professeur") {
-        $table = "enseignants";
-        $redirect = "prof-dashboard.html";
-    } else {
-        $table = "etudiants";
-        $redirect = "student-absences.html";
-    }
+$email=$_POST['email'];
+$password=$_POST['password'];
+$role=$_POST['role'];
 
-    $sql = "SELECT * FROM $table WHERE email='$email' AND motDePasse='$password'";
-    $result = $conn->query($sql);
+$sql="SELECT * FROM users WHERE email='$email'";
+$result=mysqli_query($conn,$sql);
 
-    if ($result && $result->num_rows > 0) {
-        header("Location: $redirect");
-        exit();
-    } else {
-        echo "<script>alert('Email ou mot de passe incorrect');</script>";
-    }
+if(mysqli_num_rows($result)==1){
+
+$user=mysqli_fetch_assoc($result);
+
+if($password==$user['password']){
+
+if($role==$user['role']){
+
+$_SESSION['id']=$user['id'];
+$_SESSION['role']=$user['role'];
+$_SESSION['name']=$user['name'];
+
+if($role=="admin"){
+header("Location: admin_dashboard.php");
+}
+
+elseif($role=="prof"){
+header("Location: prof_dashboard.php");
+}
+
+else{
+header("Location: student_dashboard.php");
+}
+
+exit();
+
+}
+else{
+$error="Type utilisateur incorrect";
+}
+
+}
+else{
+$error="Mot de passe incorrect";
+}
+
+}
+else{
+$error="Utilisateur non trouvé";
+}
+
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -49,33 +72,24 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["role"]))
         <div class="login-card">
 
             <h2>Connexion</h2>
+            <?php if($error!=""){ echo $error; } ?>
             <p class="subtitle">Accédez à la plateforme de gestion des absences</p>
 
             <form method="POST">
 
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="exemple@univ.dz" required>
-                </div>
+<input type="email" name="email" placeholder="Email" required>
 
-                <div class="form-group">
-                    <label>Mot de passe</label>
-                    <input type="password" name="password" placeholder="••••••••" required>
-                </div>
+<input type="password" name="password" placeholder="Mot de passe" required>
 
-                <div class="form-group">
-                    <label>Type d'utilisateur</label>
-                    <select name="role">
-                        <option>Administrateur</option>
-                        <option>Étudiant</option>
-                        <option>Professeur</option>
-                    </select>
-                </div>
+<select name="role" required>
 
-                <button type="submit" class="btn primary">
-                    Se connecter
-                </button>
+<option value="">Choisir</option>
+<option value="admin">Admin</option>
+<option value="prof">Professeur</option>
+<option value="student">Etudiant</option>
 
+</select>
+</div>
             </form>
 
         </div>
@@ -84,4 +98,3 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["role"]))
 
 </body>
 </html>
-
