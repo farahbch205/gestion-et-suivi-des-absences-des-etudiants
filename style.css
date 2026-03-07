@@ -1,3 +1,7 @@
+/* ===================================================== */
+/* ================== GLOBAL VARIABLES ================= */
+/* ===================================================== */
+/* تستعمل في جميع الصفحات */
 :root {
     --primary:#1e3c72;
     --secondary:#2a5298;
@@ -7,262 +11,174 @@
     --shadow:0 12px 30px rgba(0,0,0,0.15);
 }
 
-*{
-    box-sizing:border-box;
-}
 
-body{
-    margin:0;
-    font-family:'Segoe UI', sans-serif;
-    background:linear-gradient(135deg,var(--primary),var(--secondary));
-    color:var(--white);
-}
-
-/* NAVBAR */
-
-.navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 60px;
-    background:rgba(0,0,0,0.2);
-    backdrop-filter:blur(6px);
-}
-
-.logo{
-    font-weight:700;
-    font-size:18px;
-}
-
-.nav-links{
-    list-style:none;
-    display:flex;
-    gap:30px;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:white;
-    font-weight:500;
-}
-
-/* HERO */
-
-.hero{
-    height:90vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:0 20px;
-      background-image:linear-gradient(rgba(156, 173, 219, 0.4), rgba(2, 8, 22, 0.4)),
-        url("c:\Users\pc\Pictures\university1.jpg");
-
-    background-size: cover;
-    background-position: center;
-}
-
-.hero-content{
-    max-width:700px;
-}
-
-.hero-content h1{
-    font-size:42px;
-    margin-bottom:20px;
-}
-
-.hero-content p{
-    font-size:18px;
-    margin-bottom:30px;
-    line-height:1.6;
-}
-
-/* BUTTON */
-
-.btn{
-    padding:14px 35px;
-    border-radius:30px;
-    border:none;
-    cursor:pointer;
-    font-weight:600;
-    font-size:15px;
-    transition:0.3s;
-}
-
-.primary{
-    background:var(--accent);
-    color:var(--dark);
-}
-
-.primary:hover{
-    transform:translateY(-3px);
-}
-
-.card{
-    background:white;
-    color:#0f172a;
-    padding:30px;
-    border-radius:20px;
-    width:200px;
-    text-align:center;
-    box-shadow:var(--shadow);
-}
-.card h3{
-    margin-bottom:10px;
-}
-.card p{
-    font-size:28px;
-    font-weight:bold;
-}
-
-/* ============================= */
-/*           LOGIN PAGE          */
-/* ============================= */
-
-.login-body {
+/* ===================================================== */
+/* ================== GLOBAL STYLES ==================== */
+/* ===================================================== */
+/* يطبق على كامل الموقع */
+* {
+    box-sizing: border-box;
     margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    font-family: 'Segoe UI', sans-serif;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: #1f2937;
+    scroll-behavior: smooth;
 }
 
-.login-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-card {
-    background: white;
-    padding: 40px;
-    width: 350px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    text-align: center;
-}
-
-.login-card h2 {
-    margin-bottom: 10px;
-    color: #1e3c72;
-}
-
-.subtitle {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 25px;
-}
-
-.form-group {
-    text-align: left;
-    margin-bottom: 18px;
-}
-
-.form-group label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #333;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    transition: 0.3s;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #1e3c72;
-    box-shadow: 0 0 0 3px rgba(30,60,114,0.15);
-}
-
-/* Button */
-
-.btn {
-    width: 100%;
-    padding: 12px;
-    border-radius: 30px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.primary {
-    background: #1e3c72;
-    color: white;
-}
-
-.primary:hover {
-    background: #16315c;
-    transform: translateY(-2px);
-}
-
-/* ============================= */
-/*        GENERAL LAYOUT         */
-/* ============================= */
-
-.page-container {
-    padding: 100px 8%;
-    min-height: 100vh;
+body {
     background: #f4f7fb;
-    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
 }
 
-.page-title {
-    font-size: 28px;
-    margin-bottom: 30px;
-    color: #1e3c72;
-}
 
-/* Navbar */
-
+/* ===================================================== */
+/* ================== NAVBAR (كل الصفحات) ============== */
+/* ===================================================== */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     height: 70px;
-    background: #1e3c72;
+    background: var(--primary);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 60px;
-    color: white;
+    color: var(--white);
+    z-index: 100;
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
     gap: 30px;
-    margin: 0;
 }
 
 .navbar a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
     font-weight: 500;
 }
 
-/* Card */
 
+/* ===================================================== */
+/* ================== HOME PAGE (index.html) =========== */
+/* ===================================================== */
+/* خاص بصفحة الاستقبال فقط */
+
+.home-hero {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url("images/university1.jpg") center/cover no-repeat;
+    overflow: hidden;
+}
+
+.home-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 60, 150, 0.5);
+    backdrop-filter: blur(6px);
+    z-index: 1;
+}
+
+.home-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    color: #e9f0ef;
+}
+
+.home-hero .hero-content h1 {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.home-hero .hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.home-hero .btn-dashboard {
+    padding: 14px 36px;
+    border-radius: 8px;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* دوائر متحركة خاصة بالـHome */
+.home-hero .circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: float 20s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); }
+    50% { transform: translateY(-50px) translateX(30px) rotate(180deg); }
+    100% { transform: translateY(0) translateX(0) rotate(360deg); }
+}
+
+
+/* ===================================================== */
+/* ================== DASHBOARD PAGES ================== */
+/* ===================================================== */
+/* admin-dashboard.php */
+/* prof-dashboard.php */
+/* student-dashboard.php */
+
+.page-container {
+    padding: 120px 8%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* الكروت في الداشبورد */
 .card {
     background: white;
     padding: 30px;
     border-radius: 18px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     margin-bottom: 30px;
+    width: 80%;
+    max-width: 900px;
+    text-align: center;
 }
 
-/* Form */
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+/* ===================================================== */
+/* ================== FORMS (Ajouter / Upload) ========= */
+/* ===================================================== */
+/* 
+- add-student.php
+- add-teacher.php
+- mark-absences.php
+- upload-justification.php
+*/
 
 .form-group {
     margin-bottom: 18px;
+    text-align: left;
 }
 
 .form-group label {
@@ -279,26 +195,15 @@ body{
     border: 1px solid #ccc;
 }
 
-/* Button */
 
-.btn {
-    padding: 10px 25px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.primary {
-    background: #1e3c72;
-    color: white;
-}
-
-.primary:hover {
-    background: #16315c;
-}
-
-/* Table */
+/* ===================================================== */
+/* ================== TABLES PAGES ===================== */
+/* ===================================================== */
+/* 
+- manage-users.php
+- justifications.php
+- student-absences.php
+*/
 
 .table {
     width: 100%;
@@ -306,7 +211,7 @@ body{
 }
 
 .table th {
-    background: #1e3c72;
+    background: var(--primary);
     color: white;
     padding: 12px;
 }
@@ -320,139 +225,137 @@ body{
 .table tr:hover {
     background: #f0f4ff;
 }
-/* ===== Base ===== */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    color: #1f2937;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+
+
+/* ================== LOGIN PAGE COMPLETE ======================= */
+
+:root {
+  --primary: #1a237e;
+  --gold:    #f0a500;
 }
 
-/* ===== Hero Section ===== */
-.hero {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    padding: 0 20px;
-    overflow: hidden;
-    background-image:
-        linear-gradient(rgba(156, 173, 219, 0.4), rgba(2, 8, 22, 0.4)),
-        url("5938119477788609441_121.jpg");
-
-    background-size: cover;
-    background-position: center;
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a237e, #111866);
 }
 
-/* محتوى الهيرو */
-.hero-content {
-    position: relative;
-    max-width: 800px;
-    z-index: 2;
-    color: #ddd8d8;
+.login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.hero-content h1 {
-     color: #060e31;
-    font-size: 48px;
-    font-weight: 900;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+.login-card {
+  background: white;
+  padding: 40px;
+  width: 350px;
+  border-radius: 20px;
+  border-top: 4px solid var(--gold);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  text-align: center;
 }
 
-.hero-content p {
-    font-size: 20px;
-    margin-bottom: 30px;
-    color: #e9f0ef;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+.login-card h2 {
+  margin-bottom: 10px;
+  color: var(--primary);
 }
 
-.btn-dashboard {
-    padding: 14px 36px;
-    font-weight: 700;
-    border-radius: 8px;
-    font-size: 18px;
-    background-color: #0e2070;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s;
+.subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
 }
 
-.btn-dashboard:hover {
-    background-color: #71759e;
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 11px 14px;
+  background: #f4f7ff;
+  border: 1.5px solid #c5cef5;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 15px;
 }
 
-/* ===== Animated Circles ===== */
-.circle {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.2;
-    animation: float 20s linear infinite;
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(26,35,126,0.1);
 }
 
-.circle1 { width: 200px; height: 200px; background-color: #ffffff; top: 10%; left: 5%; animation-duration: 25s; }
-.circle2 { width: 150px; height: 150px; background-color: #f59e0b; top: 50%; left: 70%; animation-duration: 30s; }
-.circle3 { width: 100px; height: 100px; background-color: #0ea5e9; top: 70%; left: 20%; animation-duration: 35s; }
-.circle4 { width: 250px; height: 250px; background-color: #16a34a; top: 30%; left: 50%; animation-duration: 40s; }
-
-@keyframes float {
-    0% { transform: translateY(0) translateX(0) rotate(0deg); }
-    50% { transform: translateY(-50px) translateX(30px) rotate(180deg); }
-    100% { transform: translateY(0) translateX(0) rotate(360deg); }
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--gold);
+  color: var(--primary);
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-    .hero-content h1 { font-size: 36px; }
-    .hero-content p { font-size: 16px; }
-    .circle { display: none; }
-}
-/* ============================= */
-/*        CENTER TABLE STYLE     */
-/* ============================= */
-
-.page-container {
-    padding: 120px 0;
-    min-height: 100vh;
-    background: #f4f7fb;
-    font-family: 'Segoe UI', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* هذا يجعل المحتوى في الوسط */
+.btn-login:hover {
+  background: #e09600;
+  transform: translateY(-2px);
 }
 
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    width: 80%;
-    max-width: 900px; /* يجعلها في الوسط بعرض مناسب */
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+/* ── Navbar ── */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary);
+  padding: 12px 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-.table {
-    width: 100%;
-    border-collapse: collapse;
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
 }
 
-.table th {
-    background: #1e3c72;
-    color: white;
-    padding: 14px;
+.navbar-brand img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  object-fit: cover;
 }
 
-.table td {
-    padding: 14px;
-    border-bottom: 1px solid #eee;
-    text-align: center;
+.navbar-brand-text {
+  text-align: right;
+  color: white;
+  line-height: 1.4;
 }
 
-.table tr:hover {
-    background: #f0f4ff;
+.navbar-brand-text span {
+  display: block;
+}
+
+.navbar-brand-text .univ-ar {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.navbar-brand-text .univ-fr {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+} .login-body {
+  padding-top: 80px;
 }

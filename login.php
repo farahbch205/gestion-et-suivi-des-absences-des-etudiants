@@ -1,100 +1,81 @@
-```php
 <?php
-include "config.php";
+include "$_SERVER[DOCUMENT_ROOT]/gestion_absences/db_connection.php";
+$conn = OpenConnection();
 
-$error="";
+$message = "";
 
-if(isset($_POST['login'])){
+if(isset($_POST["email"]) && isset($_POST["password"])) {
 
-$email=$_POST['email'];
-$password=$_POST['password'];
-$role=$_POST['role'];
+    $email    = $_POST["email"];
+    $password = $_POST["password"];
 
-$sql="SELECT * FROM users WHERE email='$email'";
-$result=mysqli_query($conn,$sql);
+    $sql    = "SELECT * FROM users WHERE email='$email'";
+    $result = $conn->query($sql);
 
-if(mysqli_num_rows($result)==1){
+    if($result && $result->num_rows > 0) {
+        $user = $result->fetch_assoc();
 
-$user=mysqli_fetch_assoc($result);
+        // تحقق من الباسورد (عادي أو مشفر)
+        $passOk = ($password === $user["password"]) || password_verify($password, $user["password"]);
 
-if($password==$user['password']){
+        if($passOk) {
+            session_start();
+            $_SESSION["user_id"] = $user["id"];
+            $_SESSION["nom"]     = $user["nom"];
+            $_SESSION["prenom"]  = $user["prenom"];
+            $_SESSION["role"]    = $user["role"];
 
-if($role==$user['role']){
-
-$_SESSION['id']=$user['id'];
-$_SESSION['role']=$user['role'];
-$_SESSION['name']=$user['name'];
-
-if($role=="admin"){
-header("Location: admin_dashboard.php");
-}
-
-elseif($role=="prof"){
-header("Location: prof_dashboard.php");
-}
-
-else{
-header("Location: student_dashboard.php");
-}
-
-exit();
-
-}
-else{
-$error="Type utilisateur incorrect";
-}
-
-}
-else{
-$error="Mot de passe incorrect";
-}
-
-}
-else{
-$error="Utilisateur non trouvé";
-}
-
+            // توجيه حسب الـ role
+            if($user["role"] == "admin") {
+                header("Location: admin-add-student.php");
+            } elseif($user["role"] == "professeur") {
+                header("Location: prof-dashboard.html");
+            } else {
+                header("Location: student-absences.html");
+            }
+            exit();
+        } else {
+            $message = "Mot de passe incorrect";
+        }
+    } else {
+        $message = "Email introuvable";
+    }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Connexion | Gestion des Absences</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Connexion</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body class="login-body">
-
-    <div class="login-container">
-
-        <div class="login-card">
-
-            <h2>Connexion</h2>
-            <?php if($error!=""){ echo $error; } ?>
-            <p class="subtitle">Accédez à la plateforme de gestion des absences</p>
-
-            <form method="POST">
-
-<input type="email" name="email" placeholder="Email" required>
-
-<input type="password" name="password" placeholder="Mot de passe" required>
-
-<select name="role" required>
-
-<option value="">Choisir</option>
-<option value="admin">Admin</option>
-<option value="prof">Professeur</option>
-<option value="student">Etudiant</option>
-
-</select>
-</div>
-            </form>
-
-        </div>
-
+<nav class="navbar">
+  <div class="navbar-brand">
+    <img src="images/university1.jpg" alt="logo">
+    <div class="navbar-brand-text">
+      <span class="univ-ar">جامعة 20 أوت 1955 – سكيكدة</span>
+      <span class="univ-fr">Université 20 Août 1955 – Skikda</span>
     </div>
-
+  </div>
+</nav>
+<div class="login-container">
+    <div class="login-card">
+        <h2>Connexion</h2>
+        <?php if($message != "") echo "<p class='error'>$message</p>"; ?>
+        <p class="subtitle">Accédez à la plateforme de gestion des absences</p>
+        <form method="POST">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="exemple@univ.dz" required>
+            </div>
+            <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" name="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-login">Se connecter</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
