@@ -1,3 +1,11 @@
+
+<?php
+session_start();
+if(!isset($_SESSION["role"]) || $_SESSION["role"] != "admin") {
+    header("Location: login.php");
+    exit();
+}
+?>
 <?php
 include "$_SERVER[DOCUMENT_ROOT]/gestion_absences/db_connection.php";
 $conn = OpenConnection();
@@ -20,7 +28,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $user_id = $conn->insert_id;
             $sql2 = "INSERT INTO professors (user_id) VALUES ('$user_id')";
             if($conn->query($sql2)) {
-                $success = "تم إضافة الأستاذ بنجاح!";
+                $success ="تم إضافة الأستاذ بنجاح!";
+    echo "<script>alert('تم إضافة الأستاذ بنجاح!!'); window.location.href='admin-add-prof.php';</script>";
+    exit();
             } else {
                 $error = "خطأ: " . $conn->error;
             }
@@ -73,8 +83,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <label>Mot de passe</label>
     <input type="password" name="password" required>
 </div>
-<button type="submit" class="btn primary">Ajouter</button>
-</form>
+<button type="submit" class="btn primary" style="width:100%; padding:12px; font-size:16px; background-color:#FF8C00; color:white; border:none; border-radius:8px; cursor:pointer;">
+    Ajouter
+</button>
 </div>
 </div>
 </body>

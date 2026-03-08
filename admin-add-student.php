@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(!isset($_SESSION["role"]) || $_SESSION["role"] != "admin") {
+    header("Location: login.php");
+    exit();
+}
+?>
+
+<?php
 include "$_SERVER[DOCUMENT_ROOT]/gestion_absences/db_connection.php";
 $conn = OpenConnection();
 $success = "";
@@ -28,6 +36,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                      VALUES ('$user_id', '$niveau', '$specialite', '$groupe')";
             if($conn->query($sql2)) {
                 $success = "تم إضافة الطالب بنجاح!";
+    echo "<script>alert('تم إضافة الطالب بنجاح!'); window.location.href='admin-add-student.php';</script>";
+    exit();
             } else {
                 $error = "خطأ في إضافة بيانات الطالب: " . $conn->error;
             }
@@ -102,7 +112,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <option value="G4">G4</option>
     </select>
 </div>
-<button type="submit" class="btn primary">Ajouter</button>
+<button type="submit" class="btn primary" style="width:100%; padding:12px; font-size:16px; background-color:#FF8C00; color:white; border:none; border-radius:8px; cursor:pointer;">
+    Ajouter
+</button>
 </form>
 </div>
 </div>

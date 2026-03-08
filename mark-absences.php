@@ -1,17 +1,25 @@
 <?php
+session_start();
+if(!isset($_SESSION["role"]) || $_SESSION["role"] != "professeur") {
+    header("Location: login.php");
+    exit();
+}
+?>
+
+<?php
 include "$_SERVER[DOCUMENT_ROOT]/gestion_absences/db_connection.php";
 
 $conn = OpenConnection();
 
-// جلب الطلبة من students + users
+
 $etudiants_q = $conn->query("SELECT s.id, u.nom, u.prenom, s.niveau, s.specialite, s.groupe 
                               FROM students s 
                               JOIN users u ON s.user_id = u.id");
 
-// جلب المواد
+
 $modules_q = $conn->query("SELECT id, nom_module FROM modules");
 
-// جلب الأفواج والمستويات
+
 $groupes_q  = $conn->query("SELECT DISTINCT groupe FROM students ORDER BY groupe");
 $niveaux_q  = $conn->query("SELECT DISTINCT niveau FROM students ORDER BY niveau");
 
@@ -78,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["presence"])) {
     </select>
 </div>
 
-<!-- فلتر Niveau + Groupe -->
+
 <div class="form-group" style="display:flex; gap:20px; flex-wrap:wrap;">
     <div style="flex:1;">
         <label>Niveau</label>
